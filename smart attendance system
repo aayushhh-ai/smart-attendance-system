@@ -1,0 +1,283 @@
+Build a professional full-stack web app called **Smart Attendance System** for managing student attendance using unique QR codes.
+
+### 1. Student Registration / First-Time Login
+
+When a student opens the app for the first time, show a registration/login screen.
+
+Required fields:
+
+* Student Name
+* Roll Number
+* Phone Number
+* Email ID (optional)
+* Course / Branch
+* Semester / Section
+
+After registration:
+
+* Save the student's information permanently in the database.
+* Generate a unique Student ID.
+* Generate a unique QR code linked to that student's ID.
+* The QR code should remain the same for that student unless the teacher/admin resets it.
+* Do not allow two students to register with the same Roll Number.
+* Student should be able to log in later using their registered phone number/roll number.
+
+### 2. Student Dashboard
+
+After login, show a clean dashboard containing:
+
+* Student Name
+* Roll Number
+* Course / Branch
+* Semester / Section
+* Student's unique QR code
+* Total Classes
+* Classes Attended
+* Attendance Percentage
+* Recent attendance records
+
+Add a prominent **"My QR Code"** section so the student can easily display their QR code to the scanner.
+
+### 3. Attendance Scanning
+
+Create a teacher/admin attendance scanner.
+
+Teacher should be able to:
+
+* Select Class / Subject
+* Start an attendance session
+* Scan the student's QR code using the device camera
+* Automatically identify the student
+* Mark the student as PRESENT
+* Save:
+
+  * Student Name
+  * Roll Number
+  * Subject
+  * Date
+  * Exact attendance time
+  * Attendance status
+  * Class/session ID
+
+After successful scanning show:
+**"Attendance Marked Successfully"**
+
+Also display the student's name and roll number after scanning so the teacher can verify the correct student.
+
+### 4. Duplicate Attendance Protection
+
+A student must not be able to mark attendance twice for the same class/session.
+
+If the same QR code is scanned again during the same session, show:
+**"Attendance Already Marked"**
+
+Do not create duplicate attendance records.
+
+### 5. Classroom Security / Proxy Prevention
+
+Add an optional **Classroom Verification** feature to reduce proxy attendance.
+
+When the teacher starts an attendance session:
+
+* Generate a temporary attendance session.
+* Only QR scans during the active session should be accepted.
+* Session should automatically expire after the teacher ends the class.
+* Store the classroom/session information with every attendance record.
+
+Also add an optional **classroom QR / session QR** verification layer where students must first scan the classroom QR and then show their personal QR.
+
+The system should clearly separate:
+
+* Student QR
+* Classroom/session QR
+
+This should make it harder for students outside the classroom to submit attendance.
+
+### 6. Teacher Dashboard
+
+Create a professional teacher dashboard with:
+
+**Dashboard statistics**
+
+* Total Students
+* Present Today
+* Absent Today
+* Attendance Percentage
+* Active Attendance Session
+
+**Student Management**
+
+* Add Student
+* Edit Student
+* Delete/Deactivate Student
+* Search by Name
+* Search by Roll Number
+* View Student QR
+
+**Attendance Management**
+
+* Start Attendance Session
+* Scan QR
+* View Today's Attendance
+* View attendance by date
+* View attendance by subject
+* View attendance by student
+* Manually correct attendance if required
+
+### 7. Attendance History
+
+Create a complete attendance history page.
+
+Each record should show:
+
+* Date
+* Time
+* Student Name
+* Roll Number
+* Subject
+* Class/Section
+* Status: Present/Absent
+* Attendance session
+
+Add filters:
+
+* Date
+* Student
+* Roll Number
+* Subject
+* Section
+* Attendance status
+
+### 8. Attendance Percentage
+
+Automatically calculate each student's attendance percentage:
+
+Attendance Percentage =
+(Present Classes / Total Classes) × 100
+
+Show the percentage clearly on the student dashboard and teacher dashboard.
+
+Use visual indicators for:
+
+* Good attendance
+* Low attendance
+* Critical attendance
+
+### 9. Reports
+
+Add a Reports section where teachers can:
+
+* Generate daily attendance report
+* Generate monthly attendance report
+* Generate student-wise report
+* Generate subject-wise report
+* Export attendance as CSV
+* Export attendance as Excel/PDF if supported
+
+### 10. Authentication & Roles
+
+Create two roles:
+
+**Student**
+
+* Login
+* View profile
+* View personal QR
+* View attendance history
+* View attendance percentage
+
+**Teacher/Admin**
+
+* Secure login
+* Manage students
+* Create classes/subjects
+* Start attendance sessions
+* Scan QR codes
+* View and manage attendance
+* Generate reports
+
+Students must not be able to access teacher/admin pages.
+
+### 11. Database
+
+Create a proper relational database with tables/collections for:
+
+* Users
+* Students
+* Teachers
+* Subjects
+* Classes/Sections
+* Attendance Sessions
+* Attendance Records
+
+Use proper relationships and unique constraints.
+
+Important:
+
+* Roll Number must be unique within the appropriate class/section.
+* Student QR ID must be unique.
+* Attendance should have a unique constraint for Student + Attendance Session to prevent duplicates.
+
+### 12. UI/UX
+
+Make the application look like a modern professional college attendance management system.
+
+Use:
+
+* Responsive design
+* Clean dashboard
+* Sidebar navigation
+* Cards for statistics
+* Tables for attendance
+* Search and filter controls
+* QR scanner interface
+* Mobile-friendly student dashboard
+* Professional typography
+* Clear success/error notifications
+
+Create separate navigation for Student and Teacher/Admin.
+
+### 13. Important User Flow
+
+Student flow:
+
+Register → Enter Name/Roll No./Phone → Save Student Data → Generate Unique QR → Student Dashboard → Show Personal QR → Teacher Scans QR → Attendance Marked → Attendance History Updated
+
+Teacher flow:
+
+Login → Select Class/Subject → Start Attendance Session → Scan Student QR → Verify Student → Mark Present → Save Date & Time → Continue Scanning → End Session
+
+### 14. Extra Features
+
+Add these features wherever practical:
+
+* Search students instantly
+* Sort attendance by date/time
+* QR code download/print option
+* Student profile page
+* Teacher profile page
+* Attendance correction with audit information
+* Session start/end time
+* Automatic timestamps
+* Confirmation before deleting students
+* Loading states and error handling
+* Empty states when there is no attendance data
+* Demo/sample data for testing
+
+### 15. Security
+
+Do not store sensitive information inside the QR code itself.
+
+The QR should contain only a unique student identifier/token, and the backend should use that identifier to retrieve the student's data.
+
+Validate every attendance request on the server.
+
+Make sure students cannot manually change their attendance status from the frontend.
+
+### Final Requirement
+
+Build this as a **fully functional application**, not just a UI prototype.
+
+Make the database, authentication, QR generation, QR scanning, attendance logic, dashboards, attendance history, duplicate protection, and reports work together end-to-end.
+
+The final result should be polished enough to demonstrate as a **college Smart Attendance System project**.
